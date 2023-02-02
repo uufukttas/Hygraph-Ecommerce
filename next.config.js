@@ -9,6 +9,9 @@ const nextConfig = {
       },
     ],
   },
+  eslint: {
+    dirs: ["pages"]
+  }
 }
 
 module.exports = nextConfig

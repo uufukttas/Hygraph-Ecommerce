@@ -2,6 +2,7 @@ import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import React from 'react';
 import Head from 'next/head'
 import Link from 'next/link';
+import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 
 
@@ -21,7 +22,7 @@ export default function Home({ allProducts }) {
               <div className={styles.product_card} key={product.id}>
                 <Link href={`products/${product.slug}`}>
                   <div className={styles.product_img_container}>
-                    <img className={styles.product_image} src={product.image.url} alt={product.name} />
+                    <Image className={styles.product_image} src={product.image.url} alt={product.name} width={252} height={300}/>
                   </div>
                 </Link>
                 <div className={styles.product_content}>
