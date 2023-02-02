@@ -2,7 +2,6 @@ import { ApolloClient, InMemoryCache, gql } from '@apollo/client';
 import Image from 'next/image';
 
 const singleproduct = ({ product }) => {
-    console.log(product.image.url)
     return (
         <div className="container single-container">
             <div className="left-section">

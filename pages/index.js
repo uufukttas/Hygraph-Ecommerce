@@ -27,7 +27,16 @@ export default function Home({ allProducts }) {
                 <div className={styles.product_content}>
                   <h3>{product.name}</h3>
                   <p>${product.price}</p>
-                  <button className="btn">Add to cart 🛒</button>
+                  <button
+                    className="btn snipcart-add-item"
+                    data-item-id={product.id}
+                    data-item-price={product.price}
+                    data-item-url={`products/${product.slug}`}
+                    data-item-image={product.image.url}
+                    data-item-name={product.name}
+                  >
+                    Add to cart 🛒
+                  </button>
                 </div>
               </div>
             );
