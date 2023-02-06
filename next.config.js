@@ -11,7 +11,11 @@ const nextConfig = {
   },
   eslint: {
     dirs: ["pages"]
-  }
+  },
+  experimental: {
+    forceSwcTransforms: true,
+  },
 }
 
 module.exports = nextConfig
+
