@@ -49,31 +49,37 @@ export default function Home({ allProducts }) {
 }
 
 
-export async function getStaticProps() {
-  const client = new ApolloClient({
-    uri: process.env.NEXT_PUBLIC_HYGRAPH_API_URL,
-    cache: new InMemoryCache(),
-  });
-  const data = await client.query({
-    query: gql`
-        query ProductsQuery {
-           products {
-              id
-              name
-              slug
-              price
-              image {
-                 url
-              }
-           }
-        }
-     `,
-  });
-  const allProducts = data.data.products;
+export const getStaticProps = async () => {
+  try {
+    const client = new ApolloClient({
+      uri: process.env.NEXT_PUBLIC_HYGRAPH_API_URL,
+      cache: new InMemoryCache(),
+    });
+    const data = await client.query({
+      query: gql`
+          query ProductsQuery {
+            products {
+                id
+                name
+                slug
+                price
+                image {
+                  url
+                }
+            }
+          }
+      `,
+    });
+    const allProducts = data.data.products;
 
-  return {
-    props: {
-      allProducts,
-    },
-  };
+    return {
+      props: {
+        allProducts,
+      },
+    };
+  } catch (error) {
+    logErrorToExternalLoggingService(error, "Fetching initial props failed");
+
+    return ({props: {}});
+  }
 };
