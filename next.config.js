@@ -1,4 +1,3 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
   extends: ['next/core-web-vitals', 'turbo', 'prettier'],
   ignorePatterns: ['node_modules', 'dist'],
